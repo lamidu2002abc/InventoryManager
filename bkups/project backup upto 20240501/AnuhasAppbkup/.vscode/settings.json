@@ -1,0 +1,12 @@
+{
+  "java.project.referencedLibraries": {
+    "include": [
+      "lib/**/*.jar",
+      "d:\\My Files\\software\\servers\\my sql\\mysql-connector-j-8.3.0\\mysql-connector-j-8.3.0\\mysql-connector-j-8.3.0.jar",
+      "d:\\sw\\my sql\\mysql-connector-j-8.3.0\\mysql-connector-j-8.3.0\\mysql-connector-j-8.3.0.jar"
+    ],
+    "exclude": [
+      "d:\\My Files\\software\\new\\my sql\\mysql-connector-j-8.3.0\\mysql-connector-j-8.3.0\\mysql-connector-j-8.3.0.jar"
+    ]
+  }
+}
