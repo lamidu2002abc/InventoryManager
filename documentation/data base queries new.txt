@@ -1,0 +1,58 @@
+CREATE TABLE `category` (
+  `cid` int NOT NULL AUTO_INCREMENT,
+  `cname` varchar(255) NOT NULL,
+  PRIMARY KEY (`cid`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+
+CREATE TABLE `colors` (
+  `color_id` int NOT NULL AUTO_INCREMENT,
+  `color` varchar(50) NOT NULL,
+  PRIMARY KEY (`color_id`),
+  UNIQUE KEY `color` (`color`),
+  UNIQUE KEY `color_id_UNIQUE` (`color_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+
+CREATE TABLE `stock` (
+  `sid` int NOT NULL AUTO_INCREMENT,
+  `cid` int NOT NULL,
+  `color_id` int NOT NULL,
+  `size` varchar(50) NOT NULL,
+  `squantity` int NOT NULL,
+  `buying_price` decimal(10,2) NOT NULL,
+  `selling_price` decimal(10,2) NOT NULL,
+  `buying_date` date NOT NULL,
+  PRIMARY KEY (`sid`),
+  KEY `color_id_idx` (`color_id`),
+  KEY `cid` (`cid`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+
+CREATE TABLE `transactions` (
+  `tid` int NOT NULL AUTO_INCREMENT,
+  `date` date NOT NULL,
+  `customer_name` varchar(255) NOT NULL,
+  `customer_address` varchar(255) NOT NULL,
+  `customer_tel_number` varchar(10) NOT NULL,
+  `sid` int DEFAULT NULL,
+  `count` int NOT NULL,
+  `amount` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`tid`),
+  KEY `sid` (`sid`),
+  CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`sid`) REFERENCES `stock` (`sid`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+
+CREATE TABLE `inventory` (
+  `iid` int NOT NULL AUTO_INCREMENT,
+  `sid` int DEFAULT NULL,
+  `squantity` int NOT NULL,
+  PRIMARY KEY (`iid`),
+  KEY `sid` (`sid`),
+  CONSTRAINT `inventory_ibfk_1` FOREIGN KEY (`sid`) REFERENCES `stock` (`sid`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
